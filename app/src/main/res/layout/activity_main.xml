@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/flower">
+
+        <!--android:background="@drawable/flower"-->
+
+        <!--tool bar-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+        <!--song title-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/title_bg">
+                <TextView
+                    android:id="@+id/song_title"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:lines="1"
+                    android:textColor="#6DBEE1"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textAllCaps="false"
+                    android:overScrollMode="always"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:textSize="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        <!--View Page song list-->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/songs_viewPages"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="15dp" />
+
+        <!--bottom player layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <!--Todo Tool bar-->
+
+            <!--Play Button-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_include_controls">
+
+                <include layout="@layout/player_layout"/>
+
+            </LinearLayout>
+
+            <!--Tab Layout-->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                app:tabGravity="fill"
+                android:background="#43778E"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/cardview_dark_background"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/player_bg"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/navigation_menu"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
